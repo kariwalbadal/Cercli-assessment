@@ -33,3 +33,5 @@ Basic tips to run the project:
   `mvn dependency:copy-dependencies`
 - To run the Main class through bash/terminal:
   `java -cp "target/classes:target/dependency/*" cercli.Main`
+
+- Document with images from local run and suggested further improvements: https://docs.google.com/document/d/10dJBj7_Y7W4Y3zP5hpFyXrFpxwyI6CUNhHEEQeerjmk/edit?usp=sharing
