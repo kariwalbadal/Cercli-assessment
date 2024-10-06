@@ -15,7 +15,8 @@ public class ConsoleCommandExecutor extends CommandExecutor {
     public void addEmployee(Employee employee) throws Exception {
         employeeValidatorService.validate(employee);
         employeeController.addEmployee(employee);
-        System.out.println("Employee added");
+        System.out.println("Employee added\n");
+        System.out.println(employee.toString());
     }
 
     @Override

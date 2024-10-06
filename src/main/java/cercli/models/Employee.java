@@ -11,6 +11,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "employees")
+/**
+ * Employee model
+ */
 public class Employee {
 
     @Id
@@ -91,6 +94,9 @@ public class Employee {
         modifiedBy = null;
     }
 
+    /**
+     * Method to override timestamps to server timezone
+     */
     @PostLoad
     private void convertTimestamps() {
         this.createdAt = OffsetDateTimeUtils.convertToServerTime(this.createdAt);
@@ -143,7 +149,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return String.format("Employee Details\nID=%s,\nName=%s,\nPosition=%s,\nEmail=%s,\nCountry=%s,\nSalary=%.2f,\nCurrency=%s,\nCreatedAt=%s,\nModifiedAt=%s,\nRecord Created By=%s,\nRecord Updated By=%s",
+        return String.format("ID=%s,\nName=%s,\nPosition=%s,\nEmail=%s,\nCountry=%s,\nSalary=%.2f,\nCurrency=%s,\nCreatedAt=%s,\nModifiedAt=%s,\nRecord Created By=%s,\nRecord Updated By=%s",
                 employeeId, name, position, email, country, salary, currency, createdAt, modifiedAt, createdBy, modifiedBy);
     }
 }

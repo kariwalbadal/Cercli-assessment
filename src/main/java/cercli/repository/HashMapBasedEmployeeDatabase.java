@@ -6,6 +6,10 @@ import cercli.repository.exceptions.EmployeeNotFoundException;
 
 import java.util.*;
 
+/**
+ * HashMap based in-memory DB
+ * Can be used to run the code through IDE without much setup
+ */
 public class HashMapBasedEmployeeDatabase implements EmployeeDatabase {
 
     private final Map<UUID, Employee> employeeMap = new HashMap<>();
@@ -37,6 +41,7 @@ public class HashMapBasedEmployeeDatabase implements EmployeeDatabase {
                 employeeUpdate.getCountry().orElse(existingEmployee.getCountry()),         // Use updated country or keep the original
                 existingEmployee.getCreatedAt(),                                           // Keep original creation date
                 existingEmployee.getCreatedBy(),                                           // Keep original created by
+                // This logic can be updated if needed for the business
                 employeeUpdate.getModifiedAt().orElse(existingEmployee.getModifiedAt()),   // Use updated modifiedAt or keep the original
                 employeeUpdate.getModifiedBy().orElse(existingEmployee.getModifiedBy())    // Use updated modifiedBy or keep the original
         );

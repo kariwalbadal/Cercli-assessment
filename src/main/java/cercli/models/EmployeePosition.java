@@ -1,5 +1,8 @@
 package cercli.models;
 
+/**
+ * Standardise Employee Positions across the organization
+ */
 public enum EmployeePosition {
     SALES_ASSOCIATE,
     MANAGER,

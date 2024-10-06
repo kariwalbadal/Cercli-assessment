@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Service to separate data validation responsibility
+ * Client code doesn't need to worry about how many layers of validations there are and what's the validation logic
+ */
 public class ValidatorService {
     private final Map<String, Validator<?>> validators;
 
@@ -17,6 +21,11 @@ public class ValidatorService {
         this.validators = new HashMap<>();
     }
 
+    /**
+     * Add a new validator in the list of validators
+     * @param fieldName Field we want to validate
+     * @param validator Validator instance associated with the field
+     */
     public void addValidator(String fieldName, Validator<?> validator) {
         if(!validators.containsKey(fieldName)) {
             validators.put(fieldName, validator);
@@ -25,6 +34,11 @@ public class ValidatorService {
         }
     }
 
+    /**
+     * Validation for the add employee functionality
+     * @param employee
+     * @throws Exception
+     */
     public void validate(Employee employee) throws Exception {
         for (String field : validators.keySet()) {
             // Construct the getter method name
@@ -42,6 +56,11 @@ public class ValidatorService {
         }
     }
 
+    /**
+     * Validation for the {@link EmployeeUpdate} object where fields are optional
+     * @param employeeUpdate
+     * @throws Exception
+     */
     public void validate(EmployeeUpdate employeeUpdate) throws Exception {
         for (String field : validators.keySet()) {
             // Construct the getter method name

@@ -2,6 +2,9 @@ package cercli.models;
 
 import cercli.models.exceptions.UnknownCountryException;
 
+/**
+ * Add a few countries to standardise country information
+ */
 public enum Country {
     USA("United States of America"),
     CANADA("Canada"),

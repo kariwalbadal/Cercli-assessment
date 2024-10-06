@@ -7,6 +7,10 @@ import java.time.OffsetDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Model to store information of an employee that is to be updated
+ * We do not support updating timestamps and agent UUID of creation and modification
+ */
 public class EmployeeUpdate {
     private final UUID employeeId;  // Required
     private Optional<String> name = Optional.empty();
