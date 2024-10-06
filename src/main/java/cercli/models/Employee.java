@@ -1,7 +1,5 @@
 package cercli.models;
 
-import cercli.validation.exceptions.InvalidEmailException;
-import cercli.validation.exceptions.InvalidSalaryException;
 import cercli.utils.OffsetDateTimeUtils;
 import cercli.utils.UUIDUtils;
 
@@ -51,15 +49,6 @@ public class Employee {
     private final UUID modifiedBy;
 
     public Employee(String name, String position, String email, double salary, String currency, Country country) {
-        // Valid Email check
-        if (!isValidEmail(email)) {
-            throw new InvalidEmailException("Invalid email format");
-        }
-
-        // Valid salary check
-        if(salary < 0.0d) {
-            throw new InvalidSalaryException("Invalid salary");
-        }
 
         this.employeeId = UUIDUtils.getNewUUID();
         this.name = Objects.requireNonNull(name);
@@ -75,16 +64,6 @@ public class Employee {
     }
 
     public Employee(UUID employeeId, String name, String position, String email, double salary, String currency, Country country, OffsetDateTime createdAt, UUID createdBy, OffsetDateTime modifiedAt, UUID modifiedBy) {
-        // Valid Email check
-        if (!isValidEmail(email)) {
-            throw new InvalidEmailException("Invalid email format");
-        }
-
-        // Valid salary check
-        if(salary < 0.0d) {
-            throw new InvalidSalaryException("Invalid salary");
-        }
-
         this.employeeId = Objects.requireNonNull(employeeId);
         this.name = Objects.requireNonNull(name);
         this.position = Objects.requireNonNull(EmployeePosition.fromString(position).toString());
@@ -98,9 +77,18 @@ public class Employee {
         this.modifiedBy = Objects.requireNonNull(modifiedBy);
     }
 
-    private boolean isValidEmail(String email) {
-        // basic email check - we can extend it further depending on the use case
-        return email.contains("@");
+    public Employee() {
+        employeeId = null;
+        name = "";
+        position = "";
+        email = "";
+        salary = 0.0d;
+        country = null;
+        currency = "";
+        createdAt = null;
+        createdBy = null;
+        modifiedAt = null;
+        modifiedBy = null;
     }
 
     public UUID getEmployeeId() {

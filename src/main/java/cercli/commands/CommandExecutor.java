@@ -149,12 +149,22 @@ public abstract class CommandExecutor {
             }
 
             try {
-                switch (input.toLowerCase()) {
-                    case "add"  -> addEmployee(collectEmployeeData());
-                    case "update" -> updateEmployee(collectEmployeeUpdateData()); // Collect data inside method
-                    case "get" -> getEmployee(getEmployeeId()); // Collect data inside method
-                    case "getall" -> getAllEmployees();
-                    default -> throw new InvalidCommandException("Invalid Command");
+                String command = input.toLowerCase();
+                switch (command) {
+                    case "add":
+                        addEmployee(collectEmployeeData());
+                        break;
+                    case "update":
+                        updateEmployee(collectEmployeeUpdateData()); // Collect data inside method
+                        break;
+                    case "get":
+                        getEmployee(getEmployeeId()); // Collect data inside method
+                        break;
+                    case "getall":
+                        getAllEmployees();
+                        break;
+                    default:
+                        throw new InvalidCommandException("Invalid Command");
                 }
             } catch (Exception e) {
                 System.out.println("Error: " + e.getMessage());
