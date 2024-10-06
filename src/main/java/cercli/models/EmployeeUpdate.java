@@ -32,7 +32,7 @@ public class EmployeeUpdate {
     }
 
     public void setPosition(String position) {
-        this.position = Optional.ofNullable(position);
+        this.position = Optional.of(EmployeePosition.fromString(position).toString());
     }
 
     public void setEmail(String email) {

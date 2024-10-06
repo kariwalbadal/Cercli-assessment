@@ -33,7 +33,7 @@ public class EmployeeController {
         List<Employee> allEmployees = getAllEmployees();
         StringBuilder sb = new StringBuilder();
         for(Employee e: allEmployees) {
-            sb.append(e.toString()).append("\n");
+            sb.append(e.toString()).append("--------------------").append("\n\n");
         }
         return sb.toString();
     }

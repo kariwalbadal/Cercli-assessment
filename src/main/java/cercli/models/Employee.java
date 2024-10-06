@@ -37,13 +37,13 @@ public class Employee {
     private final String currency;
 
     @Column(name = "created_at", nullable = false)
-    private final OffsetDateTime createdAt;
+    private OffsetDateTime createdAt;
 
     @Column(name = "created_by", nullable = false)
     private final UUID createdBy;
 
     @Column(name = "modified_at")
-    private final OffsetDateTime modifiedAt;
+    private OffsetDateTime modifiedAt;
 
     @Column(name = "modified_by")
     private final UUID modifiedBy;
@@ -89,6 +89,12 @@ public class Employee {
         createdBy = null;
         modifiedAt = null;
         modifiedBy = null;
+    }
+
+    @PostLoad
+    private void convertTimestamps() {
+        this.createdAt = OffsetDateTimeUtils.convertToServerTime(this.createdAt);
+        this.modifiedAt = OffsetDateTimeUtils.convertToServerTime(this.createdAt);
     }
 
     public UUID getEmployeeId() {
